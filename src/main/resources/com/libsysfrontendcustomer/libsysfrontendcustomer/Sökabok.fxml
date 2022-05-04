@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.CubicCurve?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="1592.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.libsysfrontendcustomer.libsysfrontendcustomer.StartController">
+   <children>
+      <Line endX="809.0" layoutX="783.0" layoutY="155.0" startX="-783.0" />
+      <CubicCurve controlX1="1402.6998291015625" controlX2="-104.50016784667969" controlY1="711.6893310546875" controlY2="-223.6565704345703" endX="1284.0001220703125" endY="-245.99998474121094" fill="#61d47a" layoutX="308.0" layoutY="246.0" startX="-308.0000305175781" startY="604.0000610351562" stroke="BLACK" strokeWidth="0.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="66.0" layoutX="517.0" layoutY="60.0" stroke="BLACK" strokeType="INSIDE" width="519.0" />
+      <Label layoutX="641.0" layoutY="64.0" prefHeight="54.0" prefWidth="427.0" text="Söka bok/böcker" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+      </Label>
+      <TableView layoutX="406.0" layoutY="381.0" prefHeight="310.0" prefWidth="731.0">
+        <columns>
+          <TableColumn prefWidth="64.80001831054688" text="ISBN" />
+          <TableColumn prefWidth="359.2000427246094" text="Titel" />
+            <TableColumn prefWidth="322.39996337890625" text="Beskrivning" />
+        </columns>
+      </TableView>
+      <TextField fx:id="TFSBok" layoutX="400.0" layoutY="267.0" prefHeight="54.0" prefWidth="568.0" promptText="Sök böcker här!" />
+      <Button fx:id="btnSB" layoutX="986.0" layoutY="267.0" mnemonicParsing="false" onAction="#searchBookOnAction" prefHeight="54.0" prefWidth="150.0" style="-fx-background-color: #478c56;" text="Sök" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnTillbaka1" layoutX="144.0" layoutY="743.0" mnemonicParsing="false" onAction="#handleBtnTillbaka" prefHeight="54.0" prefWidth="150.0" style="-fx-background-color: #478c56;" text="Tillbaka" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Button>
+      <Label fx:id="LWarningNoBook" layoutX="620.0" layoutY="337.0" textFill="RED">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
