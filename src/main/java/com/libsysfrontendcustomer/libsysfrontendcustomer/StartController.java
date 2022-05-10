@@ -12,6 +12,8 @@ import javafx.stage.Stage;
 
 public class StartController {
 
+    ConnectionManager connectionManager = new ConnectionManager();
+
     @FXML
     private Button btnSBok;
     @FXML
@@ -38,6 +40,8 @@ public class StartController {
     private TextField TFISBN;
     @FXML
     private TextField TFPN;
+    @FXML
+    private TextField TFPassword;
 
     public void handleBtnSBok() throws Exception{
 
@@ -106,22 +110,28 @@ public class StartController {
     }
 
     public void confirmISBNOnAction(ActionEvent event){
-        if (TFISBN.getText().isBlank()){
+        String ISBN = TFISBN.getText();
+
+        if (connectionManager.sendRequest("book/get/bookByISBN?value=" + ISBN).equals("boken finns ej")){
+            LWarningISBN.setText("Boken finns ej!");
+        } else if (TFISBN.getText().isEmpty()){
             LWarningISBN.setText("Vänligen skriv in bokens ISBN!");
+        } else {
+            LWarningISBN.setText("Boken finns!");
         }
     }
 
-    public void confirmPSOnAction(ActionEvent event){
-        if (TFPN.getText().isBlank()){
-            LWarningPN.setText("Vänligen skriv in er personnummer!");
+    public void confirmBtnSSNAndPassAction(ActionEvent event){
+        String Personnummer = TFPN.getText();
+        String lösenord = TFPassword.getText();
+        System.out.println(Personnummer);
+        System.out.println(lösenord);
+        if (Boolean.parseBoolean(connectionManager.sendRequest("borrower/get/verifyBorrower?SSN=" + Personnummer + "&password=" + lösenord))){
+            LWarningPN.setText("Konfirmerad!");
+        } else if (TFPN.getText().isBlank()){
+            LWarningPN.setText("Vänligen skriv in er personnummer först för att kontollera!");
+        } else {
+            LWarningPN.setText("Finns ingen person med denna personnummer eller lösenord!");
         }
     }
-
-    /*
-     public void searchBookOnAction(ActionEvent event){
-        if (TFSBok.getText().isBlank()){
-            LWarningNoBook.setText("Vänligen skriv in en bok för att kunna söka");
-        }
-    }
-     */
 }

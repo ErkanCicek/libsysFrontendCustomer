@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Polygon?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="1592.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.libsysfrontendcustomer.libsysfrontendcustomer.StartController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="66.0" layoutX="517.0" layoutY="60.0" stroke="BLACK" strokeType="INSIDE" width="530.0" />
+      <Line endX="809.0" layoutX="783.0" layoutY="155.0" startX="-365.0999755859375" />
+      <Label layoutX="641.0" layoutY="64.0" prefHeight="54.0" prefWidth="438.0" text="Låna bok/böcker" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+      </Label>
+      <TextField fx:id="TFISBN" layoutX="515.0" layoutY="275.0" prefHeight="54.0" prefWidth="568.0" promptText="Kontrollera ISBN" />
+      <Button layoutX="1101.0" layoutY="275.0" mnemonicParsing="false" onAction="#confirmISBNOnAction" prefHeight="54.0" prefWidth="150.0" style="-fx-background-color: #e1432b;" text="Kontrollera" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Button>
+      <Polygon fill="#ea705d" layoutX="237.0" layoutY="203.0" points="-182.61764526367188, -283.25604248046875, -29.222755432128906, 98.8333969116211, 222.82888793945312, -137.31370544433594" rotate="-19.8" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <Line endX="73.5" endY="-427.0" layoutX="426.0" layoutY="427.0" startX="-107.300048828125" startY="-86.10711669921875" />
+      <Line endX="383.5" endY="413.0" layoutX="436.0" layoutY="437.0" startX="-118.0072021484375" startY="-95.4000244140625" />
+      <Polygon fill="#ea705d" layoutX="215.0" layoutY="623.0" points="-215.0000457763672, -482.1070861816406, -215.00003051757812, 227.0, 486.0999755859375, 227.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+      <TextField fx:id="TFPN" layoutX="512.0" layoutY="353.0" prefHeight="54.0" prefWidth="568.0" promptText="personnummer" />
+      <Button layoutX="724.0" layoutY="541.0" mnemonicParsing="false" onAction="#confirmBtnSSNAndPassAction" prefHeight="54.0" prefWidth="150.0" style="-fx-background-color: #e1432b;" text="Låna bok" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnTillbaka2" layoutX="124.0" layoutY="720.0" mnemonicParsing="false" onAction="#handleBtnTillbaka2" prefHeight="54.0" prefWidth="150.0" style="-fx-background-color: #e1432b;" text="Tillbaka" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Button>
+      <Label fx:id="LWarningISBN" layoutX="782.0" layoutY="228.0" textFill="RED" />
+      <Label fx:id="LWarningPN" layoutX="782.0" layoutY="417.0" textFill="RED" />
+      <TextField fx:id="TFPassword" layoutX="515.0" layoutY="435.0" prefHeight="54.0" prefWidth="568.0" promptText="Lösenord" />
+   </children>
+</AnchorPane>
