@@ -94,7 +94,7 @@ public class StartController {
         window.show();
     }
 
-    public void handleBtnTillbaka3() throws Exception{
+    public void handleBtnTillbaka3() throws Exception{ //Tillbaka knapp
         Parent root = FXMLLoader.load(getClass().getResource("StartPage.fxml"));
         Stage window = (Stage) btnTillbaka3.getScene().getWindow();
         window.setScene(new Scene(root));
