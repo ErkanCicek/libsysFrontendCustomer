@@ -29,7 +29,7 @@
       <Line endX="383.5" endY="413.0" layoutX="436.0" layoutY="437.0" startX="-118.0072021484375" startY="-95.4000244140625" />
       <Polygon fill="#ea705d" layoutX="215.0" layoutY="623.0" points="-215.0000457763672, -482.1070861816406, -215.00003051757812, 227.0, 486.0999755859375, 227.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
       <TextField fx:id="TFPN" layoutX="512.0" layoutY="353.0" prefHeight="54.0" prefWidth="568.0" promptText="personnummer" />
-      <Button layoutX="724.0" layoutY="541.0" mnemonicParsing="false" onAction="#confirmBtnSSNAndPassAction" prefHeight="54.0" prefWidth="150.0" style="-fx-background-color: #e1432b;" text="Låna bok" textFill="WHITE">
+      <Button layoutX="1101.0" layoutY="435.0" mnemonicParsing="false" onAction="#confirmBtnSSNAndPassAction" prefHeight="54.0" prefWidth="150.0" style="-fx-background-color: #e1432b;" text="Kontrollera" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
@@ -42,5 +42,10 @@
       <Label fx:id="LWarningISBN" layoutX="782.0" layoutY="228.0" textFill="RED" />
       <Label fx:id="LWarningPN" layoutX="782.0" layoutY="417.0" textFill="RED" />
       <TextField fx:id="TFPassword" layoutX="515.0" layoutY="435.0" prefHeight="54.0" prefWidth="568.0" promptText="Lösenord" />
+      <Button layoutX="745.0" layoutY="541.0" mnemonicParsing="false" onAction="#lånaBokBtnOnAction" prefHeight="54.0" prefWidth="150.0" style="-fx-background-color: #e1432b;" text="Låna bok" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

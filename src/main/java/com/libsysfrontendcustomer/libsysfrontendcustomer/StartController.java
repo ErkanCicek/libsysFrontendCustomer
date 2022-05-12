@@ -1,5 +1,6 @@
 package com.libsysfrontendcustomer.libsysfrontendcustomer;
 
+import com.google.gson.Gson;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,9 +11,13 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+
 public class StartController {
 
     ConnectionManager connectionManager = new ConnectionManager();
+    Book book;
 
     @FXML
     private Button btnSBok;
@@ -120,13 +125,30 @@ public class StartController {
             LWarningISBN.setText("Boken finns!");
         }
     }
+    public void lånaBokBtnOnAction(ActionEvent event){
+        String ISBN = TFISBN.getText();
+        String Personnummer = TFPN.getText();
+        book = new Gson().fromJson(connectionManager.sendRequest("book/get/bookByISBN?value="+ ISBN), Book.class);
+
+        if (TFISBN.getText().isBlank()||TFPN.getText().isBlank()||TFPassword.getText().isBlank()){
+            LWarningPN.setText("Vänligen fyll i allt!");
+        } else if (book.getAmount() == 0){
+            connectionManager.sendRequest("book/put/bookByISBN2?isbn=" + ISBN + "&title=" + URLEncoder.encode(book.getTitle(), StandardCharsets.UTF_8) + "&desc=" + book.getBookDesc() + "&authorId=" + book.getAuthorID() + "&genreId=" + book.getGenreID() + "&amount=" + book.getAmount() + "&Available=" + book.isBookAvailable());
+            book.setBookAvailable(false);
+        } else {
+            connectionManager.sendRequest("borrowedbooks/post/newBorrowedBook?returnDate=&ISBN=" + ISBN + "&SSN=" + Personnummer);
+            LWarningPN.setText("Boken har nu lånats");
+            book = new Gson().fromJson(connectionManager.sendRequest("book/get/bookByISBN?value="+ ISBN), Book.class);
+            int value = book.getAmount()-1;
+            connectionManager.sendRequest("book/put/bookByISBN2?isbn=" + ISBN + "&title=" + URLEncoder.encode(book.getTitle(), StandardCharsets.UTF_8) +"&desc=" + book.getBookDesc() + "&authorId=" + book.getAuthorID() + "&genreId=" + book.getGenreID() +"&amount=" + value + "&Available=" + book.isBookAvailable());
+
+        }
+    }
 
     public void confirmBtnSSNAndPassAction(ActionEvent event){
         String Personnummer = TFPN.getText();
-        String lösenord = TFPassword.getText();
-        System.out.println(Personnummer);
-        System.out.println(lösenord);
-        if (Boolean.parseBoolean(connectionManager.sendRequest("borrower/get/verifyBorrower?SSN=" + Personnummer + "&password=" + lösenord))){
+        String Lösenord = TFPassword.getText();
+        if (Boolean.parseBoolean(connectionManager.sendRequest("borrower/get/verifyBorrower?SSN=" + Personnummer + "&password=" + Lösenord))){
             LWarningPN.setText("Konfirmerad!");
         } else if (TFPN.getText().isBlank()){
             LWarningPN.setText("Vänligen skriv in er personnummer först för att kontollera!");
