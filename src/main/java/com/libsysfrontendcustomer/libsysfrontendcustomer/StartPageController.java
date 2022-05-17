@@ -122,4 +122,7 @@ public class StartPageController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
+
+    public void lånaBokBtnOnAction(ActionEvent event) {
+    }
 }
