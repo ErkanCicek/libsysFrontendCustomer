@@ -9,7 +9,7 @@ public class ConnectionManager {
 
     private HttpURLConnection connection;
 
-    public String sendRequest(String request){
+    public String sendGetRequest(String request){
         String responseString = "";
         String line;
 

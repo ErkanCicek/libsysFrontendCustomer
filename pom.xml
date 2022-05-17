@@ -66,7 +66,7 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>
-                                com.libsysfrontendcustomer.libsysfrontendcustomer/com.libsysfrontendcustomer.libsysfrontendcustomer.HelloApplication
+                                com.libsysfrontendcustomer.libsysfrontendcustomer/com.libsysfrontendcustomer.libsysfrontendcustomer.Run
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>

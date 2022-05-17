@@ -8,7 +8,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="1592.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.libsysfrontendcustomer.libsysfrontendcustomer.StartController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="1592.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.libsysfrontendcustomer.libsysfrontendcustomer.StartPageController">
    <children>
       <Line endX="809.0" layoutX="783.0" layoutY="155.0" startX="-783.0" />
       <CubicCurve controlX1="924.5198974609375" controlX2="-593.880126953125" controlY1="-367.0010986328125" controlY2="679.3198852539062" endX="847.7548828125" endY="599.9999389648438" fill="#4e9ae1" layoutX="304.0" layoutY="250.0" startX="-303.9999694824219" startY="-249.99998474121094" stroke="BLACK" strokeWidth="0.0" />

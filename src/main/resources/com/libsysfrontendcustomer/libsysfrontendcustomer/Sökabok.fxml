@@ -11,7 +11,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="1592.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.libsysfrontendcustomer.libsysfrontendcustomer.StartController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="1592.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.libsysfrontendcustomer.libsysfrontendcustomer.SearchBookController">
    <children>
       <Line endX="809.0" layoutX="783.0" layoutY="155.0" startX="-783.0" />
       <CubicCurve controlX1="1402.6998291015625" controlX2="-104.50016784667969" controlY1="711.6893310546875" controlY2="-223.6565704345703" endX="1284.0001220703125" endY="-245.99998474121094" fill="#61d47a" layoutX="308.0" layoutY="246.0" startX="-308.0000305175781" startY="604.0000610351562" stroke="BLACK" strokeWidth="0.0" />
@@ -21,20 +21,21 @@
             <Font name="System Bold" size="36.0" />
          </font>
       </Label>
-      <TableView layoutX="406.0" layoutY="381.0" prefHeight="310.0" prefWidth="731.0">
+      <TableView fx:id="bookTableView" fixedCellSize="-2.0" layoutX="411.0" layoutY="309.0" prefHeight="310.0" prefWidth="731.0">
         <columns>
-          <TableColumn prefWidth="64.80001831054688" text="ISBN" />
-          <TableColumn prefWidth="359.2000427246094" text="Titel" />
-            <TableColumn prefWidth="322.39996337890625" text="Beskrivning" />
+          <TableColumn fx:id="titleCol" editable="false" prefWidth="341.5999755859375" resizable="false" sortable="false" text="Titel" />
+            <TableColumn fx:id="authorCol" editable="false" prefWidth="244.800048828125" resizable="false" sortable="false" text="Författare" />
+            <TableColumn fx:id="genreCol" editable="false" prefWidth="144.7999267578125" resizable="false" sortable="false" text="Genre" />
         </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
       </TableView>
-      <TextField fx:id="TFSBok" layoutX="400.0" layoutY="267.0" prefHeight="54.0" prefWidth="568.0" promptText="Sök böcker här!" />
-      <Button fx:id="btnSB" layoutX="986.0" layoutY="267.0" mnemonicParsing="false" onAction="#searchBookOnAction" prefHeight="54.0" prefWidth="150.0" style="-fx-background-color: #478c56;" text="Sök" textFill="WHITE">
+      <TextField fx:id="inputField" alignment="CENTER" layoutX="493.0" layoutY="214.0" prefHeight="54.0" prefWidth="568.0" promptText="Sök böcker här!">
          <font>
-            <Font name="System Bold" size="20.0" />
-         </font>
-      </Button>
-      <Button fx:id="btnTillbaka1" layoutX="144.0" layoutY="743.0" mnemonicParsing="false" onAction="#handleBtnTillbaka" prefHeight="54.0" prefWidth="150.0" style="-fx-background-color: #478c56;" text="Tillbaka" textFill="WHITE">
+            <Font size="25.0" />
+         </font></TextField>
+      <Button fx:id="goBackToStart" layoutX="144.0" layoutY="743.0" mnemonicParsing="false" onAction="#goBackBtn" prefHeight="54.0" prefWidth="150.0" style="-fx-background-color: #478c56;" text="Tillbaka" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
@@ -44,5 +45,10 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
+      <Button fx:id="chooseBook" layoutX="737.0" layoutY="634.0" mnemonicParsing="false" onAction="#goToBookDetails" prefHeight="42.0" prefWidth="143.0" style="-fx-background-color: #478c56;" text="Titta på bok" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
