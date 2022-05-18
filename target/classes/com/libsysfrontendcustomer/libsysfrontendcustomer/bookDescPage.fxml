@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.Reflection?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.CubicCurve?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="1592.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.libsysfrontendcustomer.libsysfrontendcustomer.BookDescPageController">
+   <children>
+      <CubicCurve controlX1="-159.20001220703125" controlX2="672.800048828125" controlY1="-405.199462890625" controlY2="333.5999755859375" endX="1440.0" endY="-380.0" fill="#9100b1" layoutX="152.0" layoutY="380.0" startX="-159.1999969482422" startY="-116.61422729492188" stroke="WHITE" />
+      <Label alignment="CENTER" layoutX="-8.0" layoutY="330.0" prefHeight="38.0" prefWidth="139.0" text="TITEL:">
+         <font>
+            <Font name="System Bold Italic" size="28.0" />
+         </font>
+         <effect>
+            <Reflection topOpacity="0.09" />
+         </effect>
+      </Label>
+      <Label alignment="CENTER" layoutX="23.0" layoutY="399.0" prefHeight="40.0" prefWidth="166.0" text="Beskrivning:">
+         <font>
+            <Font name="System Bold Italic" size="28.0" />
+         </font>
+         <effect>
+            <Reflection fraction="1.0" topOpacity="0.04" />
+         </effect>
+      </Label>
+      <Label alignment="CENTER" layoutX="30.0" layoutY="33.0" prefHeight="40.0" prefWidth="266.0" text="Tillängliga böcker:">
+         <font>
+            <Font name="System Italic" size="28.0" />
+         </font>
+         <effect>
+            <Reflection topOpacity="0.03" />
+         </effect>
+      </Label>
+      <Label fx:id="amountLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="125.0" layoutY="73.0" prefHeight="50.0" prefWidth="75.0" text="1" textFill="#e100b1">
+         <font>
+            <Font name="System Bold" size="28.0" />
+         </font>
+      </Label>
+      <Label layoutX="550.0" layoutY="113.0" prefHeight="50.0" prefWidth="139.0" rotate="-12.3" text="Skribent" textFill="#690f71">
+         <font>
+            <Font name="System Bold" size="26.0" />
+         </font>
+      </Label>
+      <Label fx:id="titleLabel" layoutX="113.0" layoutY="325.0" prefHeight="50.0" prefWidth="709.0" text="Harry potter och de vises sten">
+         <font>
+            <Font name="System Italic" size="30.0" />
+         </font>
+      </Label>
+      <Line endX="1861.9000244140625" layoutX="14.0" layoutY="367.0" startX="-100.0" />
+      <Label fx:id="authorLabel" alignment="CENTER" layoutX="384.0" layoutY="163.0" prefHeight="66.0" prefWidth="455.0" rotate="-10.0" text="J.K Rowling" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="38.0" />
+         </font>
+         <effect>
+            <Reflection />
+         </effect>
+      </Label>
+      <Label fx:id="genreLabel" layoutX="236.0" layoutY="142.0" prefHeight="57.0" prefWidth="308.0" rotate="-12.3" text="Fantasi" textFill="#a711ac">
+         <font>
+            <Font name="System Italic" size="33.0" />
+         </font>
+      </Label>
+      <Button fx:id="goBackBtn" layoutX="754.0" layoutY="745.0" mnemonicParsing="false" onAction="#goBack" style="-fx-background-color: #9e1bbc;" text="Tillbaka" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
+      <Text fx:id="bookDescLabel" layoutX="37.0" layoutY="467.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="1510.9367218017578">
+         <font>
+            <Font size="25.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>
