@@ -10,7 +10,9 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.net.URL;
@@ -52,6 +54,14 @@ public class StartPageController implements Initializable {
     private TextField TFPN;
     @FXML
     private TextField TFPassword;
+    @FXML
+    private Button btnRedirectMinaSidor;
+    @FXML
+    public Button btnTillbaka4;
+    @FXML
+    public Text MinaSidorLabel;
+    @FXML
+    public TextArea TAMinaSidor;
 
 
     public void handleBtnSBok() throws Exception{
@@ -110,8 +120,9 @@ public class StartPageController implements Initializable {
         String Lösenord = TFPassword.getText();
         if (Boolean.parseBoolean(connectionManager.sendGetRequest("borrower/get/verifyBorrower?SSN=" + Personnummer + "&password=" + Lösenord))){
             LWarningPN.setText("Konfirmerad!");
-        } else if (TFPN.getText().isBlank()){
-            LWarningPN.setText("Vänligen skriv in er personnummer först för att kontollera!");
+            TAMinaSidor.setText(connectionManager.sendGetRequest("borrowedbooks/get/getAllBorrowedBooksBySSN?value=" + Personnummer));
+        } else if (TFPN.getText().isBlank() || TFPassword.getText().isBlank()){
+            LWarningPN.setText("Vänligen skriv in er personnummer samt lösenord först för att kontollera!");
         } else {
             LWarningPN.setText("Finns ingen person med denna personnummer eller lösenord!");
         }
@@ -134,5 +145,24 @@ public class StartPageController implements Initializable {
             connectionManager.sendGetRequest("borrowedbooks/post/newBorrowedBook?returnDate=" + DateHelper.getReturnDate() + "&ISBN=" + inputValues[0] +"&bookId="+ inputValues[1] +"&SSN=" + Personnummer);
             LWarningPN.setText("Boken har nu lånats");
         }
+    }
+
+    public void handleBtnRedirectMinaSidor() throws Exception{
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("MinaSidor.fxml")));
+
+        Stage window = (Stage) btnRedirectMinaSidor.getScene().getWindow();
+        window.setScene(new Scene(root));
+        window.setFullScreenExitHint("");
+        window.setFullScreen(true);
+        window.show();
+    }
+
+    public void handleBtnTillbaka4() throws Exception{
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("StartPage.fxml")));
+        Stage window = (Stage) btnTillbaka4.getScene().getWindow();
+        window.setScene(new Scene(root));
+        window.setFullScreenExitHint("");
+        window.setFullScreen(true);
+        window.show();
     }
 }
