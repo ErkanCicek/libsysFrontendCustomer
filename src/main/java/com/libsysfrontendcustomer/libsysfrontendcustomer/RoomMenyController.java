@@ -21,7 +21,6 @@ import java.util.ResourceBundle;
 public class RoomMenyController implements Initializable {
 
 	ConnectionManager manager = new ConnectionManager();
-	Room room;
 	private Image image;
 
 	@FXML
@@ -58,10 +57,11 @@ public class RoomMenyController implements Initializable {
 		try {
 			Parent root = loader.load();
 			RoomDetailsController roomDetailsController = loader.getController();
-			var room = new Gson().fromJson(manager.sendGetRequest("room/get/roomById?roomId=1"), HashMap.class);
+			var room = new Gson().fromJson(manager.sendGetRequest("room/get/roomById?id=1"), HashMap.class);
 			image = new Image(Objects.requireNonNull(getClass().getResourceAsStream((String) room.get("imageUrl"))));
 			roomDetailsController.ImageViewId.setImage(image);
 			roomDetailsController.roomNameId.setText((String) room.get("roomName"));
+			roomDetailsController.init(1);
 			Stage stage = (Stage) roomOneBtn.getScene().getWindow();
 			stage.setScene(new Scene(root));
 			stage.setFullScreenExitHint("");
@@ -77,10 +77,11 @@ public class RoomMenyController implements Initializable {
 		try {
 			Parent root = loader.load();
 			RoomDetailsController roomDetailsController = loader.getController();
-			var room = new Gson().fromJson(manager.sendGetRequest("room/get/roomById?roomId=2"), HashMap.class);
+			var room = new Gson().fromJson(manager.sendGetRequest("room/get/roomById?id=2"), HashMap.class);
 			image = new Image(Objects.requireNonNull(getClass().getResourceAsStream((String) room.get("imageUrl"))));
 			roomDetailsController.ImageViewId.setImage(image);
 			roomDetailsController.roomNameId.setText((String) room.get("roomName"));
+			roomDetailsController.init(2);
 			Stage stage = (Stage) roomTwoBtn.getScene().getWindow();
 			stage.setScene(new Scene(root));
 			stage.setFullScreenExitHint("");
@@ -96,10 +97,11 @@ public class RoomMenyController implements Initializable {
 		try {
 			Parent root = loader.load();
 			RoomDetailsController roomDetailsController = loader.getController();
-			var room = new Gson().fromJson(manager.sendGetRequest("room/get/roomById?roomId=3"), HashMap.class);
+			var room = new Gson().fromJson(manager.sendGetRequest("room/get/roomById?id=3"), HashMap.class);
 			image = new Image(Objects.requireNonNull(getClass().getResourceAsStream((String) room.get("imageUrl"))));
 			roomDetailsController.ImageViewId.setImage(image);
 			roomDetailsController.roomNameId.setText((String) room.get("roomName"));
+			roomDetailsController.init(3);
 			Stage stage = (Stage) roomThreeBtn.getScene().getWindow();
 			stage.setScene(new Scene(root));
 			stage.setFullScreenExitHint("");
@@ -115,10 +117,11 @@ public class RoomMenyController implements Initializable {
 		try {
 			Parent root = loader.load();
 			RoomDetailsController roomDetailsController = loader.getController();
-			var room = new Gson().fromJson(manager.sendGetRequest("room/get/roomById?roomId=4"), HashMap.class);
+			var room = new Gson().fromJson(manager.sendGetRequest("room/get/roomById?id=4"), HashMap.class);
 			image = new Image(Objects.requireNonNull(getClass().getResourceAsStream((String) room.get("imageUrl"))));
 			roomDetailsController.ImageViewId.setImage(image);
 			roomDetailsController.roomNameId.setText((String) room.get("roomName"));
+			roomDetailsController.init(4);
 			Stage stage = (Stage) roomFourBtn.getScene().getWindow();
 			stage.setScene(new Scene(root));
 			stage.setFullScreenExitHint("");
