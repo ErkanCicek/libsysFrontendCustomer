@@ -10,6 +10,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -35,6 +36,8 @@ public class SearchBookController implements Initializable {
 	public Button goBackToStart;
 	public Label LWarningNoBook;
 	public Button chooseBook;
+	@FXML
+	public Button BTNToIF;
 
 
 	public void goBackBtn(ActionEvent event) {
@@ -112,5 +115,14 @@ public class SearchBookController implements Initializable {
 		}catch (IOException e){
 			e.printStackTrace();
 		}
+	}
+
+	public void goToInköpsFörslag() throws Exception{
+		Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("InköpsFörslag.fxml")));
+		Stage window = (Stage) BTNToIF.getScene().getWindow();
+		window.setScene(new Scene(root));
+		window.setFullScreenExitHint("");
+		window.setFullScreen(true);
+		window.show();
 	}
 }

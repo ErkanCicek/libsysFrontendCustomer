@@ -33,7 +33,7 @@
             <Font name="System Bold" size="20.0" />
          </font>
       </Button>
-      <Button fx:id="btnRedirectMinaSidor" layoutX="1357.0" layoutY="71.0" mnemonicParsing="false" onAction="#handleBtnRedirectMinaSidor" opacity="0.0" prefHeight="48.0" prefWidth="137.0" style="-fx-background-color: #4235d4;" text="Mina sidor" textFill="WHITE">
+      <Button fx:id="btnRedirectMinaSidor" layoutX="1357.0" layoutY="71.0" mnemonicParsing="false" onAction="#handleBtnRedirectMinaSidor" prefHeight="48.0" prefWidth="137.0" style="-fx-background-color: #4235d4;" text="Mina sidor" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
