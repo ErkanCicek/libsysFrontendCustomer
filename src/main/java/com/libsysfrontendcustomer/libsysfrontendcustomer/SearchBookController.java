@@ -64,21 +64,19 @@ public class SearchBookController implements Initializable {
 			);
 		}
 		FilteredList<TableViewBookSearchModel>filteredList = new FilteredList<>(observableList, p -> true);
-		inputField.textProperty().addListener(((observableValue, s, t1) -> {
-			filteredList.setPredicate(tableViewBookSearchModel -> {
-				if (t1 == null || t1.isEmpty()){
-					return true;
-				}
+		inputField.textProperty().addListener(((observableValue, s, t1) -> filteredList.setPredicate(tableViewBookSearchModel -> {
+			if (t1 == null || t1.isEmpty()){
+				return true;
+			}
 
-				String lowercase = t1.toLowerCase();
+			String lowercase = t1.toLowerCase();
 
-				if (tableViewBookSearchModel.getTitle().toLowerCase().contains(lowercase)){
-					return true;
-				}else if(tableViewBookSearchModel.getAuthor().toLowerCase().contains(lowercase)){
-					return true;
-				}else return tableViewBookSearchModel.getGenre().toLowerCase().contains(lowercase);
-			});
-		}));
+			if (tableViewBookSearchModel.getTitle().toLowerCase().contains(lowercase)){
+				return true;
+			}else if(tableViewBookSearchModel.getAuthor().toLowerCase().contains(lowercase)){
+				return true;
+			}else return tableViewBookSearchModel.getGenre().toLowerCase().contains(lowercase);
+		})));
 
 		SortedList<TableViewBookSearchModel> sortedList = new SortedList<>(filteredList);
 

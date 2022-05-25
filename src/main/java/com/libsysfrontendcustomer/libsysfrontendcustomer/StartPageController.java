@@ -1,6 +1,7 @@
 package com.libsysfrontendcustomer.libsysfrontendcustomer;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.libsysfrontendcustomer.libsysfrontendcustomer.models.util.DateHelper;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,7 +16,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.lang.reflect.Type;
 import java.net.URL;
+import java.util.Map;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -118,7 +121,10 @@ public class StartPageController implements Initializable {
     public void confirmBtnSSNAndPassAction(ActionEvent event){
         String Personnummer = TFPN.getText();
         String Lösenord = TFPassword.getText();
-        if (Boolean.parseBoolean(connectionManager.sendGetRequest("borrower/get/verifyBorrower?SSN=" + Personnummer + "&password=" + Lösenord))){
+        Type mapType = new TypeToken<Map<String, Object>>(){}.getType();
+        Map<String, Object> verifyLoginOutput = new Gson().fromJson(connectionManager.sendGetRequest("borrower/get/verifyBorrower?SSN=" + Personnummer + "&password=" + Lösenord), mapType);
+        boolean isVerified = (boolean) verifyLoginOutput.get("booleanvalue");
+        if (isVerified){
             LWarningPN.setText("Konfirmerad!");
             TAMinaSidor.setText(connectionManager.sendGetRequest("borrowedbooks/get/getAllBorrowedBooksBySSN?value=" + Personnummer));
         } else if (TFPN.getText().isBlank() || TFPassword.getText().isBlank()){
