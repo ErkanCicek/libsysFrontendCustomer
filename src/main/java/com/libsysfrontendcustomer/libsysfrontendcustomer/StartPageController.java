@@ -137,13 +137,14 @@ public class StartPageController implements Initializable {
         String ISBNandId = TFISBN.getText();
         String[] inputValues = ISBNandId.split("-");
         String Personnummer = TFPN.getText();
-        book = new Gson().fromJson(connectionManager.sendGetRequest("book/get/bookByISBN?value="+ inputValues[0]), Book.class);
-
+        book = new Gson().fromJson(connectionManager.sendGetRequest("book/get/bookByIsbnAndId?value="+ inputValues[0]+ "&bookId=" + inputValues[1]), Book.class);
         if (TFISBN.getText().isBlank()||TFPN.getText().isBlank()||TFPassword.getText().isBlank()){
             LWarningPN.setText("Vänligen fyll i allt!");
         } else {
             connectionManager.sendGetRequest("borrowedbooks/post/newBorrowedBook?returnDate=" + DateHelper.getReturnDate() + "&ISBN=" + inputValues[0] +"&bookId="+ inputValues[1] +"&SSN=" + Personnummer);
             LWarningPN.setText("Boken har nu lånats");
+            book.setBookAvailable(false);
+            connectionManager.sendPutRequest("book/put/reserveBook?bookId=" + inputValues[1] + "&isbn=" + inputValues[0] +"&Available=" + book.isBookAvailable());
         }
     }
 
