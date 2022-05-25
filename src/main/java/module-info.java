@@ -5,6 +5,6 @@ module com.libsysfrontendcustomer.libsysfrontendcustomer {
 
 	opens com.libsysfrontendcustomer.libsysfrontendcustomer.models to javafx.fxml, com.google.gson;
 	exports com.libsysfrontendcustomer.libsysfrontendcustomer.models;
-	opens com.libsysfrontendcustomer.libsysfrontendcustomer to javafx.fxml;
+	opens com.libsysfrontendcustomer.libsysfrontendcustomer to javafx.fxml, com.google.gson;
 	exports com.libsysfrontendcustomer.libsysfrontendcustomer;
 }

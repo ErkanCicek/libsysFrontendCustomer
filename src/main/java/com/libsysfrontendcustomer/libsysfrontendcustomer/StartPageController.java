@@ -1,27 +1,29 @@
 package com.libsysfrontendcustomer.libsysfrontendcustomer;
 
 import com.google.gson.Gson;
-import com.libsysfrontendcustomer.libsysfrontendcustomer.models.Book;
-import com.libsysfrontendcustomer.libsysfrontendcustomer.models.TableViewBookSearchModel;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import com.libsysfrontendcustomer.libsysfrontendcustomer.models.util.DateHelper;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import java.lang.reflect.Type;
 import java.net.URL;
-import java.util.*;
+import java.util.Objects;
+import java.util.ResourceBundle;
 
 public class StartPageController implements Initializable {
+    Book book;
 
     public TextField inputField;
+    DateHelper dateHelper = new DateHelper();
     ConnectionManager connectionManager = new ConnectionManager();
 
     @FXML
@@ -52,6 +54,14 @@ public class StartPageController implements Initializable {
     private TextField TFPN;
     @FXML
     private TextField TFPassword;
+    @FXML
+    private Button btnRedirectMinaSidor;
+    @FXML
+    public Button btnTillbaka4;
+    @FXML
+    public Text MinaSidorLabel;
+    @FXML
+    public TextArea TAMinaSidor;
 
 
     public void handleBtnSBok() throws Exception{
@@ -94,9 +104,10 @@ public class StartPageController implements Initializable {
     }
 
     public void confirmISBNOnAction(ActionEvent event){
-        String ISBN = TFISBN.getText();
+        String ISBNandId = TFISBN.getText();
+        String[] inputValues = ISBNandId.split("-");
 
-        if (connectionManager.sendGetRequest("book/get/bookByISBN?value=" + ISBN).equals("boken finns ej")){
+        if (connectionManager.sendGetRequest("book/get/bookByIsbnAndId?value=" + inputValues[0] + "&bookId=" + Integer.parseInt(inputValues[1])).equals("boken finns ej")){
             LWarningISBN.setText("Boken finns ej!");
         } else if (TFISBN.getText().isEmpty()){
             LWarningISBN.setText("Vänligen skriv in bokens ISBN!");
@@ -106,13 +117,12 @@ public class StartPageController implements Initializable {
     }
     public void confirmBtnSSNAndPassAction(ActionEvent event){
         String Personnummer = TFPN.getText();
-        String lösenord = TFPassword.getText();
-        System.out.println(Personnummer);
-        System.out.println(lösenord);
-        if (Boolean.parseBoolean(connectionManager.sendGetRequest("borrower/get/verifyBorrower?SSN=" + Personnummer + "&password=" + lösenord))){
+        String Lösenord = TFPassword.getText();
+        if (Boolean.parseBoolean(connectionManager.sendGetRequest("borrower/get/verifyBorrower?SSN=" + Personnummer + "&password=" + Lösenord))){
             LWarningPN.setText("Konfirmerad!");
-        } else if (TFPN.getText().isBlank()){
-            LWarningPN.setText("Vänligen skriv in er personnummer först för att kontollera!");
+            TAMinaSidor.setText(connectionManager.sendGetRequest("borrowedbooks/get/getAllBorrowedBooksBySSN?value=" + Personnummer));
+        } else if (TFPN.getText().isBlank() || TFPassword.getText().isBlank()){
+            LWarningPN.setText("Vänligen skriv in er personnummer samt lösenord först för att kontollera!");
         } else {
             LWarningPN.setText("Finns ingen person med denna personnummer eller lösenord!");
         }
@@ -124,5 +134,36 @@ public class StartPageController implements Initializable {
     }
 
     public void lånaBokBtnOnAction(ActionEvent event) {
+        String ISBNandId = TFISBN.getText();
+        String[] inputValues = ISBNandId.split("-");
+        String Personnummer = TFPN.getText();
+        book = new Gson().fromJson(connectionManager.sendGetRequest("book/get/bookByIsbnAndId?value="+ inputValues[0]+ "&bookId=" + inputValues[1]), Book.class);
+        if (TFISBN.getText().isBlank()||TFPN.getText().isBlank()||TFPassword.getText().isBlank()){
+            LWarningPN.setText("Vänligen fyll i allt!");
+        } else {
+            connectionManager.sendGetRequest("borrowedbooks/post/newBorrowedBook?returnDate=" + DateHelper.getReturnDate() + "&ISBN=" + inputValues[0] +"&bookId="+ inputValues[1] +"&SSN=" + Personnummer);
+            LWarningPN.setText("Boken har nu lånats");
+            book.setBookAvailable(false);
+            connectionManager.sendPutRequest("book/put/reserveBook?bookId=" + inputValues[1] + "&isbn=" + inputValues[0] +"&Available=" + book.isBookAvailable());
+        }
+    }
+
+    public void handleBtnRedirectMinaSidor() throws Exception{
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("MinaSidor.fxml")));
+
+        Stage window = (Stage) btnRedirectMinaSidor.getScene().getWindow();
+        window.setScene(new Scene(root));
+        window.setFullScreenExitHint("");
+        window.setFullScreen(true);
+        window.show();
+    }
+
+    public void handleBtnTillbaka4() throws Exception{
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("StartPage.fxml")));
+        Stage window = (Stage) btnTillbaka4.getScene().getWindow();
+        window.setScene(new Scene(root));
+        window.setFullScreenExitHint("");
+        window.setFullScreen(true);
+        window.show();
     }
 }
