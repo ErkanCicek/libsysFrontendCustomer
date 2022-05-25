@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.CubicCurve?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="1592.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.libsysfrontendcustomer.libsysfrontendcustomer.StartPageController">
+   <children>
+      <Line endX="809.0" layoutX="783.0" layoutY="155.0" startX="-783.0" />
+      <CubicCurve controlX1="924.5198974609375" controlX2="-593.880126953125" controlY1="-367.0010986328125" controlY2="679.3198852539062" endX="1288.0" endY="600.0" layoutX="304.0" layoutY="250.0" startX="-304.0000305175781" startY="-250.0" stroke="BLACK" strokeWidth="0.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.37439998984336853" green="0.7124000191688538" blue="0.7799999713897705" opacity="0.9691780209541321" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.6385964751243591" green="0.9153216481208801" blue="0.9578947424888611" opacity="0.6499999761581421" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill></CubicCurve>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="66.0" layoutX="452.0" layoutY="62.0" stroke="BLACK" strokeType="INSIDE" width="692.0" />
+      <Label layoutX="705.0" layoutY="68.0" prefHeight="54.0" prefWidth="202.0" text="Mina sidor" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnTillbaka4" layoutX="101.0" layoutY="745.0" mnemonicParsing="false" onAction="#handleBtnTillbaka4" prefHeight="48.0" prefWidth="137.0" style="-fx-background-color: #5fb6c7;" text="Tillbaka" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Button>
+      <TextField fx:id="TFPN" layoutX="129.0" layoutY="263.0" prefHeight="27.0" prefWidth="325.0" />
+      <TextField fx:id="TFPassword" layoutX="129.0" layoutY="370.0" prefHeight="20.0" prefWidth="323.0" />
+      <Label layoutX="129.0" layoutY="223.0" prefHeight="46.0" prefWidth="242.0" text="Personnummer">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </Label>
+      <Label layoutX="132.0" layoutY="329.0" prefHeight="46.0" prefWidth="242.0" text="Lösenord">
+         <font>
+            <Font name="System Bold" size="19.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnValidate" layoutX="216.0" layoutY="438.0" mnemonicParsing="false" onAction="#confirmBtnSSNAndPassAction" prefHeight="48.0" prefWidth="137.0" style="-fx-background-color: #5fb6c7;" text="Visa info" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Button>
+      <Label fx:id="LWarningPN" layoutX="143.0" layoutY="414.0" textFill="RED" />
+      <TextArea fx:id="TAMinaSidor" blendMode="MULTIPLY" layoutX="578.0" layoutY="231.0" prefHeight="410.0" prefWidth="840.0" />
+   </children>
+</AnchorPane>

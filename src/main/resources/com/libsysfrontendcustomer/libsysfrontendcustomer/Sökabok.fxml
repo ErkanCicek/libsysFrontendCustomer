@@ -50,5 +50,15 @@
             <Font name="System Bold" size="16.0" />
          </font>
       </Button>
+      <Label layoutX="1074.0" layoutY="644.0" prefHeight="62.0" prefWidth="456.0" text="Skicka gärna ett förslag om en bok du önskar!">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <Button fx:id="BTNToIF" layoutX="1202.0" layoutY="700.0" mnemonicParsing="false" onAction="#goToInköpsFörslag" prefHeight="42.0" prefWidth="143.0" style="-fx-background-color: #478c56;" text="Klicka här!" textAlignment="CENTER" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

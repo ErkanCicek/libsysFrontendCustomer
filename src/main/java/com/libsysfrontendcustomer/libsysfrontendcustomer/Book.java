@@ -1,22 +1,30 @@
 package com.libsysfrontendcustomer.libsysfrontendcustomer;
 
 public class Book {
+    private int bookId;
     private String ISBN;
     private String title;
     private String bookDesc;
     private int authorID;
     private int genreID;
-    private int amount;
     private boolean isBookAvailable;
 
-    public Book(String ISBN, String title, String bookDesc, int authorID, int genreID, int amount) {
+    public Book(int bookId, String ISBN, String title, String bookDesc, int authorID, int genreID, boolean isBookAvailable) {
+        this.bookId = bookId;
         this.ISBN = ISBN;
         this.title = title;
         this.bookDesc = bookDesc;
         this.authorID = authorID;
         this.genreID = genreID;
-        this.amount = amount;
-        isBookAvailable = true;
+        this.isBookAvailable = isBookAvailable;
+    }
+
+    public int getBookId() {
+        return bookId;
+    }
+
+    public void setBookId(int bookId) {
+        this.bookId = bookId;
     }
 
     public String getISBN() {
@@ -59,14 +67,6 @@ public class Book {
         this.genreID = genreID;
     }
 
-    public int getAmount() {
-        return amount;
-    }
-
-    public void setAmount(int amount) {
-        this.amount = amount;
-    }
-
     public boolean isBookAvailable() {
         return isBookAvailable;
     }
@@ -78,12 +78,12 @@ public class Book {
     @Override
     public String toString() {
         return "Book{" +
-                "ISBN='" + ISBN + '\'' +
+                "bookId=" + bookId +
+                ", ISBN='" + ISBN + '\'' +
                 ", title='" + title + '\'' +
                 ", bookDesc='" + bookDesc + '\'' +
                 ", authorID=" + authorID +
                 ", genreID=" + genreID +
-                ", amount=" + amount +
                 ", isBookAvailable=" + isBookAvailable +
                 '}';
     }
