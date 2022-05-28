@@ -5,8 +5,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.Objects;
 
 public class StartPageController {
@@ -20,11 +22,13 @@ public class StartPageController {
     private Button btnRedirectMinaSidor;
 
     public void handleBtnSBok() throws Exception{
-
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Sökabok.fxml")));
-
-        Stage window = (Stage) btnSBok.getScene().getWindow();
-        window.setScene(new Scene(root));
+        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("Sökabok.fxml"));
+        Parent root = loader.load();
+        SearchBookController controller = loader.getController();
+        controller.init("book/get/allBooks");
+        Scene scene = new Scene(root);
+        Stage window = (Stage)this.btnSBok.getScene().getWindow();
+        window.setScene(scene);
         window.setFullScreenExitHint("");
         window.setFullScreen(true);
         window.show();
@@ -53,6 +57,20 @@ public class StartPageController {
 
         Stage window = (Stage) btnRedirectMinaSidor.getScene().getWindow();
         window.setScene(new Scene(root));
+        window.setFullScreenExitHint("");
+        window.setFullScreen(true);
+        window.show();
+    }
+
+    public void goToPopularBook() throws IOException {
+        FXMLLoader loader = new FXMLLoader(this.getClass().getResource("Sökabok.fxml"));
+        Parent root = loader.load();
+        SearchBookController controller = loader.getController();
+        controller.init("book/get/mostPopularAvailableBook");
+        controller.searchBookTitleLabel.setText("Vår topplista");
+        Scene scene = new Scene(root);
+        Stage window = (Stage)this.btnSBok.getScene().getWindow();
+        window.setScene(scene);
         window.setFullScreenExitHint("");
         window.setFullScreen(true);
         window.show();
