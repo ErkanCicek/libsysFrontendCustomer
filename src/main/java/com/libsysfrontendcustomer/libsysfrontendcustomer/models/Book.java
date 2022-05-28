@@ -19,6 +19,15 @@ public class Book {
 		isBookAvailable = true;
 	}
 
+	public Book(String ISBN, String title, String bookDesc, int authorID, int genreID) {
+		this.ISBN = ISBN;
+		this.title = title;
+		this.bookDesc = bookDesc;
+		this.authorID = authorID;
+		this.genreID = genreID;
+		this.isBookAvailable = true;
+	}
+
 	public int getBookId() {
 		return bookId;
 	}

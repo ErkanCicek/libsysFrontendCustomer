@@ -5,6 +5,7 @@ import java.time.format.DateTimeFormatter;
 
 /**
  * class with static methods to get current date and return date which returns date value in 2 weeks
+ * @deprecated
  */
 public class DateHelper {
 	/**

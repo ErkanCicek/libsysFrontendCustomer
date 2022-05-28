@@ -2,13 +2,15 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.CubicCurve?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="1592.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.libsysfrontendcustomer.libsysfrontendcustomer.StartPageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="1592.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.libsysfrontendcustomer.libsysfrontendcustomer.StartPageController">
    <children>
       <Line endX="809.0" layoutX="783.0" layoutY="155.0" startX="-783.0" />
       <CubicCurve controlX1="924.5198974609375" controlX2="-593.880126953125" controlY1="-367.0010986328125" controlY2="679.3198852539062" endX="847.7548828125" endY="599.9999389648438" fill="#4e9ae1" layoutX="304.0" layoutY="250.0" startX="-303.9999694824219" startY="-249.99998474121094" stroke="BLACK" strokeWidth="0.0" />
@@ -38,5 +40,18 @@
             <Font name="System Bold" size="20.0" />
          </font>
       </Button>
+      <ImageView cache="true" fitHeight="247.0" fitWidth="340.0" layoutX="131.0" layoutY="157.0" onMouseClicked="#goToPopularBook" pickOnBounds="true" rotate="-16.2">
+         <Image url="@popularbook.png" />
+      </ImageView>
+      <Label layoutX="232.0" layoutY="261.0" onMouseClicked="#goToPopularBook" prefHeight="40.0" prefWidth="138.0" rotate="-25.3" text="topplista">
+         <font>
+            <Font name="System Bold" size="27.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="200.0" layoutY="245.0" onMouseClicked="#goToPopularBook" prefHeight="26.0" prefWidth="158.0" rotate="-25.6" text="Se vår">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

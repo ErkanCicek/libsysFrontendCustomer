@@ -16,7 +16,7 @@
       <Line endX="809.0" layoutX="783.0" layoutY="155.0" startX="-783.0" />
       <CubicCurve controlX1="1402.6998291015625" controlX2="-104.50016784667969" controlY1="711.6893310546875" controlY2="-223.6565704345703" endX="1284.0001220703125" endY="-245.99998474121094" fill="#61d47a" layoutX="308.0" layoutY="246.0" startX="-308.0000305175781" startY="604.0000610351562" stroke="BLACK" strokeWidth="0.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="66.0" layoutX="517.0" layoutY="60.0" stroke="BLACK" strokeType="INSIDE" width="519.0" />
-      <Label layoutX="641.0" layoutY="64.0" prefHeight="54.0" prefWidth="427.0" text="Söka bok/böcker" textFill="WHITE">
+      <Label fx:id="searchBookTitleLabel" layoutX="641.0" layoutY="64.0" prefHeight="54.0" prefWidth="427.0" text="Söka bok/böcker" textFill="WHITE">
          <font>
             <Font name="System Bold" size="36.0" />
          </font>

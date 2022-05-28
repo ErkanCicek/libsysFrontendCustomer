@@ -24,17 +24,28 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class SearchBookController implements Initializable {
+public class SearchBookController {
 	ConnectionManager manager = new ConnectionManager();
+	@FXML
 	public TableView<TableViewBookSearchModel> bookTableView;
+	@FXML
 	public TableColumn<TableViewBookSearchModel, String>titleCol;
+	@FXML
 	public TableColumn <TableViewBookSearchModel, String>authorCol;
+	@FXML
 	public TableColumn<TableViewBookSearchModel, String> genreCol;
+
 	public ObservableList<TableViewBookSearchModel> observableList = FXCollections.observableArrayList();
 
+	@FXML
+	public Label searchBookTitleLabel;
+	@FXML
 	public TextField inputField;
+	@FXML
 	public Button goBackToStart;
+	@FXML
 	public Label LWarningNoBook;
+	@FXML
 	public Button chooseBook;
 	@FXML
 	public Button BTNToIF;
@@ -53,9 +64,8 @@ public class SearchBookController implements Initializable {
 		}
 	}
 
-	@Override
-	public void initialize(URL url, ResourceBundle resourceBundle) {
-		Book[]books = new Gson().fromJson(manager.sendGetRequest("book/get/allBooks"), Book[].class);
+	public void init(String request){
+		Book[]books = new Gson().fromJson(manager.sendGetRequest(request), Book[].class);
 		for (Book book : books) {
 			Author tempAuthor = new Gson().fromJson(manager.sendGetRequest("author/get/authorById?id=" + book.getAuthorID()), Author.class);
 			Genre tempGenre = new Gson().fromJson(manager.sendGetRequest("genre/get/genreById?id=" + book.getGenreID()), Genre.class);
@@ -87,9 +97,7 @@ public class SearchBookController implements Initializable {
 		genreCol.setCellValueFactory(new PropertyValueFactory<>("genre"));
 
 		bookTableView.setItems(sortedList);
-
 	}
-
 	public void goToBookDetails() {
 		TableViewBookSearchModel temp = bookTableView.getSelectionModel().getSelectedItem();
 		Book book = new Gson().fromJson(manager.sendGetRequest("book/get/bookByISBN?bookIsbn=" + temp.getIsbn()), Book.class);
