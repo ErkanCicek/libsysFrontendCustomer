@@ -7,11 +7,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.util.Objects;
 
 public class StartPageController {
-
     @FXML
     private Button btnSBok;
     @FXML
@@ -21,15 +19,12 @@ public class StartPageController {
     @FXML
     private Button btnRedirectMinaSidor;
 
-
     public void handleBtnSBok() throws Exception{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("Sökabok.fxml"));
-        Parent root = loader.load();
-        SearchBookController controller = loader.getController();
-        controller.init("book/get/allBooks");
-        Scene scene = new Scene(root);
-        Stage window = (Stage)this.btnSBok.getScene().getWindow();
-        window.setScene(scene);
+
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Sökabok.fxml")));
+
+        Stage window = (Stage) btnSBok.getScene().getWindow();
+        window.setScene(new Scene(root));
         window.setFullScreenExitHint("");
         window.setFullScreen(true);
         window.show();
@@ -63,18 +58,4 @@ public class StartPageController {
         window.show();
     }
 
-
-    public void goToPopularBook() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("Sökabok.fxml"));
-        Parent root = loader.load();
-        SearchBookController controller = loader.getController();
-        controller.init("book/get/mostPopularAvailableBook");
-        controller.searchBookTitleLabel.setText("Vår Topplista");
-        Scene scene = new Scene(root);
-        Stage window = (Stage)this.btnSBok.getScene().getWindow();
-        window.setScene(scene);
-        window.setFullScreenExitHint("");
-        window.setFullScreen(true);
-        window.show();
-    }
 }

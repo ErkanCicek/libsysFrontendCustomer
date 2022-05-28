@@ -14,7 +14,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="1592.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.libsysfrontendcustomer.libsysfrontendcustomer.StartPageController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="850.0" prefWidth="1592.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.libsysfrontendcustomer.libsysfrontendcustomer.MinaSidorController">
    <children>
       <Line endX="809.0" layoutX="783.0" layoutY="155.0" startX="-783.0" />
       <CubicCurve controlX1="924.5198974609375" controlX2="-593.880126953125" controlY1="-367.0010986328125" controlY2="679.3198852539062" endX="1288.0" endY="600.0" layoutX="304.0" layoutY="250.0" startX="-304.0000305175781" startY="-250.0" stroke="BLACK" strokeWidth="0.0">
@@ -57,7 +57,7 @@
             <Font name="System Bold" size="19.0" />
          </font>
       </Label>
-      <Button fx:id="btnValidate" layoutX="216.0" layoutY="438.0" mnemonicParsing="false" onAction="#confirmBtnSSNAndPassAction" prefHeight="48.0" prefWidth="137.0" style="-fx-background-color: #5fb6c7;" text="Visa info" textFill="WHITE">
+      <Button fx:id="btnValidate" layoutX="216.0" layoutY="438.0" mnemonicParsing="false" onAction="#confirmBtnSSNAndPassMSAction" prefHeight="48.0" prefWidth="137.0" style="-fx-background-color: #5fb6c7;" text="Visa info" textFill="WHITE">
          <font>
             <Font name="System Bold" size="20.0" />
          </font>
