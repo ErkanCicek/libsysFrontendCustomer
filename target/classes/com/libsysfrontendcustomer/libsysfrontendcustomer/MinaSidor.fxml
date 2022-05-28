@@ -52,7 +52,7 @@
             <Font name="System Bold" size="19.0" />
          </font>
       </Label>
-      <Label layoutX="132.0" layoutY="329.0" prefHeight="46.0" prefWidth="242.0" text="Lösenord">
+      <Label layoutX="132.0" layoutY="347.0" prefHeight="28.0" prefWidth="251.0" text="Lösenord">
          <font>
             <Font name="System Bold" size="19.0" />
          </font>
@@ -76,8 +76,8 @@
       <TableView fx:id="TVLB" layoutX="577.0" layoutY="231.0" prefHeight="162.0" prefWidth="708.0">
         <columns>
           <TableColumn fx:id="CID" prefWidth="32.7999267578125" text="ID" />
-          <TableColumn fx:id="CÅB" minWidth="0.0" prefWidth="112.800048828125" text="Återlämna bok" />
-            <TableColumn fx:id="CISBN" minWidth="0.0" prefWidth="156.7999267578125" text="ISBN" />
+          <TableColumn fx:id="CÅB" minWidth="0.0" prefWidth="108.79998779296875" text="Återlämna bok" />
+            <TableColumn fx:id="CISBN" minWidth="0.0" prefWidth="161.5999755859375" text="ISBN" />
             <TableColumn fx:id="CPersonnummer" minWidth="0.0" prefWidth="256.800048828125" text="Personnummer" />
             <TableColumn fx:id="CBID" minWidth="0.0" prefWidth="146.4000244140625" text="Bok ID" />
         </columns>
