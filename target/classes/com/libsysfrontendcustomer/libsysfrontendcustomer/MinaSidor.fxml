@@ -73,21 +73,21 @@
             <Font name="System Bold" size="19.0" />
          </font>
       </Label>
-      <TableView fx:id="TVLB" layoutX="577.0" layoutY="231.0" prefHeight="146.0" prefWidth="642.0">
+      <TableView fx:id="TVLB" layoutX="577.0" layoutY="231.0" prefHeight="162.0" prefWidth="708.0">
         <columns>
           <TableColumn fx:id="CID" prefWidth="32.7999267578125" text="ID" />
           <TableColumn fx:id="CÅB" minWidth="0.0" prefWidth="112.800048828125" text="Återlämna bok" />
             <TableColumn fx:id="CISBN" minWidth="0.0" prefWidth="156.7999267578125" text="ISBN" />
             <TableColumn fx:id="CPersonnummer" minWidth="0.0" prefWidth="256.800048828125" text="Personnummer" />
-            <TableColumn fx:id="CBID" minWidth="0.0" prefWidth="82.39990234375" text="Bok ID" />
+            <TableColumn fx:id="CBID" minWidth="0.0" prefWidth="146.4000244140625" text="Bok ID" />
         </columns>
       </TableView>
-      <TableView fx:id="TVRR" layoutX="571.0" layoutY="443.0" prefHeight="146.0" prefWidth="642.0">
+      <TableView fx:id="TVRR" layoutX="571.0" layoutY="443.0" prefHeight="167.0" prefWidth="717.0">
          <columns>
             <TableColumn fx:id="CDatum" prefWidth="172.0" text="Datum" />
             <TableColumn fx:id="CTid" prefWidth="123.199951171875" text="Tid" />
             <TableColumn fx:id="CLID" prefWidth="184.800048828125" text="Låntagarens ID" />
-            <TableColumn fx:id="CRID" prefWidth="162.4000244140625" text="Rum ID" />
+            <TableColumn fx:id="CRID" prefWidth="236.00002441406252" text="Rum ID" />
          </columns>
       </TableView>
    </children>
