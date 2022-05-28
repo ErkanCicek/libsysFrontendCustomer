@@ -13,12 +13,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.lang.reflect.Type;
 import java.net.URL;
 import java.util.Map;
@@ -71,16 +68,15 @@ public class StartPageController implements Initializable {
 
 
     public void handleBtnSBok() throws Exception{
-        FXMLLoader fxmlLoader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("Sökabok.fxml")));
-        Parent root = fxmlLoader.load();
-        SearchBookController controller = fxmlLoader.getController();
+
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Sökabok.fxml")));
 
         Stage window = (Stage) btnSBok.getScene().getWindow();
-        controller.init("book/get/allBooks");
         window.setScene(new Scene(root));
         window.setFullScreenExitHint("");
         window.setFullScreen(true);
         window.show();
+
     }
     public void handleBtnLBok() throws Exception{
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Lånabok.fxml")));
@@ -176,18 +172,4 @@ public class StartPageController implements Initializable {
         window.setFullScreen(true);
         window.show();
     }
-
-	public void goToPopularBook() throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Objects.requireNonNull(getClass().getResource("Sökabok.fxml")));
-        Parent root = fxmlLoader.load();
-        SearchBookController controller = fxmlLoader.getController();
-
-        Stage window = (Stage) btnSBok.getScene().getWindow();
-        controller.init("book/get/mostPopularAvailableBook");
-        controller.searchBookTitleLabel.setText("VÅRA TOPPLISTA");
-        window.setScene(new Scene(root));
-        window.setFullScreenExitHint("");
-        window.setFullScreen(true);
-        window.show();
-	}
 }
