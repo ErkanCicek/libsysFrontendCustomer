@@ -84,4 +84,5 @@ public class LånaBöckerController {
             connectionManager.sendPutRequest("book/put/reserveBook?bookId=" + inputValues[1] + "&isbn=" + inputValues[0] +"&Available=" + book.isBookAvailable());
         }
     }
+    //Test
 }
