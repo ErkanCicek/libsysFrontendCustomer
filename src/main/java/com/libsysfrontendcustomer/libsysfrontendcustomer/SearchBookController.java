@@ -99,6 +99,7 @@ public class SearchBookController {
 		bookTableView.setItems(sortedList);
 	}
 	public void goToBookDetails() {
+		System.out.println(bookTableView.getSelectionModel().getSelectedItem().getIsbn());
 		TableViewBookSearchModel temp = bookTableView.getSelectionModel().getSelectedItem();
 		Book book = new Gson().fromJson(manager.sendGetRequest("book/get/bookByISBN?bookIsbn=" + temp.getIsbn()), Book.class);
 		Author author = new Gson().fromJson(manager.sendGetRequest("author/get/authorById?id=" + temp.getAuthorId()), Author.class);

@@ -20,9 +20,10 @@ import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class BookDescPageController implements Initializable{
+public class BookDescPageController{
 	ConnectionManager manager = new ConnectionManager();
-
+	@FXML
+	public Button goToSimiliarBooks;
 	@FXML
 	public Label amountLabel;
 	@FXML
@@ -36,23 +37,31 @@ public class BookDescPageController implements Initializable{
 	@FXML
 	public Button goBackBtn;
 
-	public void goBack(ActionEvent event) {
-		try{
-			Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("SökaBok.fxml")));
-			Stage window = (Stage) goBackBtn.getScene().getWindow();
-			window.setScene(new Scene(root));
-			window.setMaximized(true);
-			window.setFullScreenExitHint("");
-			window.setFullScreen(true);
-			window.show();
-		}catch (IOException e){
-			e.printStackTrace();
-		}
+	public void goBack(ActionEvent event) throws IOException {
+		FXMLLoader loader = new FXMLLoader(this.getClass().getResource("Sökabok.fxml"));
+		Parent root = loader.load();
+		SearchBookController controller = loader.getController();
+		controller.init("book/get/allBooks");
+		Scene scene = new Scene(root);
+		Stage window = (Stage)this.goBackBtn.getScene().getWindow();
+		window.setScene(scene);
+		window.setFullScreenExitHint("");
+		window.setFullScreen(true);
+		window.show();
 	}
 
-
-	@Override
-	public void initialize(URL url, ResourceBundle resourceBundle) {
-
+	public void goToSimilarBooks() throws IOException {
+		Genre genre = new Gson().fromJson(manager.sendGetRequest("genre/get/genreByName?value=" + genreLabel.getText()), Genre.class);
+		FXMLLoader loader = new FXMLLoader(this.getClass().getResource("Sökabok.fxml"));
+		Parent root = loader.load();
+		SearchBookController controller = loader.getController();
+		controller.init("book/get/booksByGenreId?id=" + genre.getGenreID());
+		controller.searchBookTitleLabel.setText("Liknande böcker");
+		Scene scene = new Scene(root);
+		Stage window = (Stage)this.goToSimiliarBooks.getScene().getWindow();
+		window.setScene(scene);
+		window.setFullScreenExitHint("");
+		window.setFullScreen(true);
+		window.show();
 	}
 }
